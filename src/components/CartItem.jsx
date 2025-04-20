@@ -1,8 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+
+import { useDispatch } from 'react-redux';
+import { modifyQuantityOfAnItem } from '../action-creator/cart';
 
 const CartItem = ({item}) => {
  
     const [itemQuantity, setItemQuantity] = useState(item.quantity)
+    const dispatch = useDispatch();
+
 
 
   return (
@@ -24,7 +29,14 @@ const CartItem = ({item}) => {
 
        <td>
           <div className='qty-input'>
-             <button className='qty-count qty-count-minus'>
+             <button className='qty-count qty-count-minus'
+             onClick={()=>{
+                dispatch(modifyQuantityOfAnItem({
+                    id : item.id,
+                    quantity: itemQuantity - 1,
+                }));
+                setItemQuantity(itemQuantity - 1);
+             }}>
                  <figure>-</figure>
              </button>
              <input 
@@ -32,11 +44,24 @@ const CartItem = ({item}) => {
              className='product-qty'
               min={1}
               value={itemQuantity}
-              onChange={() => {}}
+              onChange={(e) => {
+                dispatch(modifyQuantityOfAnItem({
+                    id : item.id,
+                    quantity: Number(e.target.value),
+                }));
+                setItemQuantity(e.target.value);
+              }}
               
               />
               
-              <button className='qty-count qty-count-plus'> 
+              <button className='qty-count qty-count-plus'
+              onClick={()=>{dispatch(modifyQuantityOfAnItem({
+                id : item.id,
+                quantity: itemQuantity + 1,
+              }));
+               setItemQuantity(itemQuantity + 1);
+            }}
+              > 
                 <figure>+</figure>
               </button>
 
@@ -45,7 +70,10 @@ const CartItem = ({item}) => {
 
        <td>${item.price * item.quantity}</td>
        <td>
-         <button className='btn-delete'>
+         <button onClick={()=>dispatch(modifyQuantityOfAnItem({
+            id : item.id,
+            quantity: 0,
+         }))} className='btn-delete'>
             X
          </button>
        </td>

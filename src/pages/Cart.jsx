@@ -1,21 +1,18 @@
 import React, { use, useEffect, useState } from 'react'
 import CartItem from '../components/CartItem';
-
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 const Cart = () => {
+const dispatch = useDispatch();
+const cart  = useSelector((storeState)=> storeState.cart);
+let totalSum = 0;
+cart.forEach((item)=>{
+  totalSum += item.price * item.quantity;
+})
+  
 
 
-  const [cart, setCart] = useState([])
-
-  useEffect(() =>{
-    fetch('http://localhost:3000/products')
-    .then(res => res.json())
-    .then(data => {
-     const cartArr = data.map((item)=>({...item, quantity: 1}))
-      setCart(cartArr)
-    })
-  },[])
- 
   return (
    <>
      <div className='.account-setting__content'>
@@ -46,12 +43,17 @@ const Cart = () => {
 
 
           <h2 className='total-price'>
-            Your total price is ${}
+            Your total price is ${totalSum}
           </h2>
 
 
           <div className='mt-50'>
-            <button className='btn-big' type='button' >
+            <button  onClick={()=>{
+              dispatch({
+                type: 'cart/clearCart',
+                payload: cart,
+              })
+            }} className='btn-big' type='button' >
                Clear Cart
             </button>
           </div>
