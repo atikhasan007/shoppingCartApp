@@ -1,27 +1,28 @@
-export const addToCart = (product) =>{
-    return {
-        type: 'cart/addToCart',
-        payload: product,
-    }
-}
+// export const addToCart = (product) => ({
+//     type: 'cart/addToCart',
+//     payload: product,
+// });
+
+// export const modifyQuantityOfAnItem = (obj) => ({
+//     type: 'cart/modifyQuantityOfAnItem',
+//     payload: obj,
+// });
+
+// export const removeProduct = (id) => ({
+//     type: 'cart/removeProduct',
+//     payload: id,
+// });
+
+// export const clearCart = () => ({
+//     type: 'cart/clearCart',
+// });
 
 
-export const modifyQuantityOfAnItem = (obj) =>{    
-    return {
-        type: 'cart/modifyQuantityOfAnItem',
-        payload: obj,
-}
-}
 
-export const removeProduct = (id) =>{
-    return {
-        type: 'cart/removeProduct',
-        payload: id,
-    }
-}
+import { createAction } from '@reduxjs/toolkit';
 
-export const clearCart = () =>{
-    return {
-        type: 'cart/clearCart',
-    }
-}
+export const addToCart = createAction('cart/addToCart');
+export const modifyQuantityOfAnItem = createAction('cart/modifyQuantityOfAnItem');
+export const removeProduct = createAction('cart/removeProduct');
+export const clearCart = createAction('cart/clearCart');
+

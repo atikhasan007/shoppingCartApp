@@ -14,9 +14,10 @@ const Shop = () => {
     <div>
         <h1>Shop</h1>
         <div className='products'>
-            {products.map(product => (
-                <ProductCard product={product}/>
-            ))}
+        {products.map(product => (
+  <ProductCard key={product.id} product={product} />
+))}
+
         </div>
     </div>
   )
