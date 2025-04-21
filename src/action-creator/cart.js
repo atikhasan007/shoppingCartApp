@@ -19,10 +19,21 @@
 
 
 
-import { createAction } from '@reduxjs/toolkit';
+// import { createAction } from '@reduxjs/toolkit';
 
-export const addToCart = createAction('cart/addToCart');
-export const modifyQuantityOfAnItem = createAction('cart/modifyQuantityOfAnItem');
-export const removeProduct = createAction('cart/removeProduct');
-export const clearCart = createAction('cart/clearCart');
+// export const addToCart = createAction('cart/addToCart');
+// export const modifyQuantityOfAnItem = createAction('cart/modifyQuantityOfAnItem');
+// export const removeProduct = createAction('cart/removeProduct');
+// export const clearCart = createAction('cart/clearCart');
 
+import { addToCart
+     ,modifyQuantityOfAnItem,
+      removeProduct,
+       clearCart 
+    } from "../store/reducers/cartReducer";
+export {
+    addToCart,
+    modifyQuantityOfAnItem,
+    removeProduct,
+    clearCart
+}
