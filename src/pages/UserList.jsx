@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { fetchUser } from '../store/middlewares';
+import { fetchUserList } from '../store/reducers/userReducer';
 import { useDispatch, useSelector } from 'react-redux';
 
 const UserList = () => {
@@ -8,7 +8,7 @@ const UserList = () => {
      
     const dispatch = useDispatch();
     useEffect(()=>{
-        dispatch(fetchUser);   
+        dispatch(fetchUserList());   
     },[])
 
 

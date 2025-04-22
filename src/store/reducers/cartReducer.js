@@ -10,7 +10,7 @@
 */
 
 
-export const cartReducer = (state = [], action) =>{
+  export const cartReducer = (state = [], action) =>{
     switch(action.type){
         case 'cart/addToCart':{
             const product = state.find((item)=> item.id === action.payload.id);
@@ -144,3 +144,5 @@ export const cartReducer = (state = [], action) =>{
 
 // export const {addToCart, removeProduct, modifyQuantityOfAnItem, clearCart} = carSlice.actions;
 // export default carSlice.reducer;
+
+

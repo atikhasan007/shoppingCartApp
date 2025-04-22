@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPost } from '../store/middlewares';
+import { fetchPostList } from '../store/reducers/postReducer';
 
 const PostList = () => {
 
@@ -8,7 +9,7 @@ const PostList = () => {
      
     const dispatch = useDispatch();
     useEffect(()=>{
-        dispatch(fetchPost);
+        dispatch(fetchPostList());
     },[])
 
 
