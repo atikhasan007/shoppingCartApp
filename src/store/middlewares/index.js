@@ -1,18 +1,18 @@
-export const ourMiddleware = (store) => (next) => async (action) => {
-    // console.log(JSON.stringify(store.getState()), "store state");
-    // console.log(action, "action");
+// export const ourMiddleware = (store) => (next) => async (action) => {
+//     // console.log(JSON.stringify(store.getState()), "store state");
+//     // console.log(action, "action");
 
    
 
-     if (typeof action === 'function'){
-        action(store.dispatch);
-        return;
+//      if (typeof action === 'function'){
+//         action(store.dispatch);
+//         return;
 
-     }
+//      }
 
 
-     next(action);
-};
+//      next(action);
+// };
 
 
 
