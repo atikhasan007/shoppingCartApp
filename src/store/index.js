@@ -1,28 +1,29 @@
-// import {createStore, combineReducers} from "redux"
-// import { composeWithDevTools } from "@redux-devtools/extension"; 
-// // ✅ This is correct
+import {createStore, combineReducers, applyMiddleware} from "redux"
+import { composeWithDevTools } from "@redux-devtools/extension"; 
+import { ourMiddleware } from "./middlewares";
+import { postReducer } from "./reducers/postReducer"
 
 
-
-// import { cartReducer } from "./reducers/cartReducer"
-// const rootReducer  = combineReducers({
-//     cart:cartReducer,
-// })
-
-
-// export const store = createStore(rootReducer,composeWithDevTools())
-
-
-
-
-import {configureStore} from "@reduxjs/toolkit"
-import  cartReducer  from "./reducers/cartReducer"
-
-const rootReducer = {
-    cart: cartReducer
-}
-
-export const store = configureStore({
-    reducer: rootReducer,
-    
+import { cartReducer } from "./reducers/cartReducer"
+import { userReducer } from "./reducers/userReducer";
+const rootReducer  = combineReducers({
+    cart:cartReducer,
+    post : postReducer,
+    user: userReducer,
 })
+export const store = createStore(rootReducer,composeWithDevTools(applyMiddleware(ourMiddleware)))
+
+
+
+
+// import {configureStore} from "@reduxjs/toolkit"
+// import  cartReducer  from "./reducers/cartReducer"
+
+// const rootReducer = {
+//     cart: cartReducer
+// }
+
+// export const store = configureStore({
+//     reducer: rootReducer,
+    
+// })

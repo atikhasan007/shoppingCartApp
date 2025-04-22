@@ -12,6 +12,13 @@ const Nav = () => {
                     <li className="header__nav-item"> 
                         <Link to="/cart">Cart</Link>
                     </li>
+                    <li className="header__nav-item">
+                        <Link to="/posts">Posts</Link>
+                    </li>
+                    <li className="header__nav-item">
+                        <Link to="/users">Users</Link>
+                    </li>
+                    
                 </ul>
 
             </nav>

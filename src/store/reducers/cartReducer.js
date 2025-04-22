@@ -10,59 +10,59 @@
 */
 
 
-// export const cartReducer = (state = [], action) =>{
-//     switch(action.type){
-//         case 'cart/addToCart':{
-//             const product = state.find((item)=> item.id === action.payload.id);
+export const cartReducer = (state = [], action) =>{
+    switch(action.type){
+        case 'cart/addToCart':{
+            const product = state.find((item)=> item.id === action.payload.id);
 
-//             return product ? state.map((item) =>{
-//                 if(item.id === product.id){
-//                     return {
-//                         ...item,
-//                         quantity: item.quantity + 1
-//                     }
+            return product ? state.map((item) =>{
+                if(item.id === product.id){
+                    return {
+                        ...item,
+                        quantity: item.quantity + 1
+                    }
 
-//                 }
-//                 return item;
-//             }) :[
-//                 ...state,
-//                 {
-//                     ...action.payload,
-//                     quantity: 1
-//                 }
-//             ] 
-//         }
-
-
-//         case 'cart/removeProduct':{
-//             return state.filter((item) => item.id !== action.payload);
-//         }
-
-//         case 'cart/modifyQuantityOfAnItem' : {
-//             const updatedCart = state.map((item) =>{
-//                 if(item.id === action.payload.id){
-//                     return {
-//                         ...item,
-//                         quantity: action.payload.quantity
-//                     }
-//                 }
-//                 return item;
-//             })
-//             return updatedCart;
-
-//         }
+                }
+                return item;
+            }) :[
+                ...state,
+                {
+                    ...action.payload,
+                    quantity: 1
+                }
+            ] 
+        }
 
 
-//         case 'cart/clearCart':{
-//             return [];
+        case 'cart/removeProduct':{
+            return state.filter((item) => item.id !== action.payload);
+        }
 
-//         }
-//         default:{
-//             return state;
-//         }
-//     }
+        case 'cart/modifyQuantityOfAnItem' : {
+            const updatedCart = state.map((item) =>{
+                if(item.id === action.payload.id){
+                    return {
+                        ...item,
+                        quantity: action.payload.quantity
+                    }
+                }
+                return item;
+            })
+            return updatedCart;
 
-// }
+        }
+
+
+        case 'cart/clearCart':{
+            return [];
+
+        }
+        default:{
+            return state;
+        }
+    }
+
+}
 
 
 
@@ -114,33 +114,33 @@
 
 
 
-import { createSlice } from "@reduxjs/toolkit";
-const carSlice = createSlice({
-   name : 'cart',
-   initialState : [],
-   reducers : {
-      addToCart : (state, action) => {
-         const product = state.find((item)=> item.id === action.payload.id);
-         product ? 
-          (product.quantity += 1)
-          : state.push({
-            ...action.payload,
-            quantity: 1
-          })
-      },
-      removeProduct : (state, action) => {
-         return [...state.filter(item => item.id !== action.payload)];
-      },
-      modifyQuantityOfAnItem : (state, action) => {
-         const productIndex = state.findIndex((item) => item.id === action.payload.id);
-         state[productIndex].quantity = action.payload.quantity;
-      },
-      clearCart : () => {
-         return [];
-      }
-   }
+// import { createSlice } from "@reduxjs/toolkit";
+// const carSlice = createSlice({
+//    name : 'cart',
+//    initialState : [],
+//    reducers : {
+//       addToCart : (state, action) => {
+//          const product = state.find((item)=> item.id === action.payload.id);
+//          product ? 
+//           (product.quantity += 1)
+//           : state.push({
+//             ...action.payload,
+//             quantity: 1
+//           })
+//       },
+//       removeProduct : (state, action) => {
+//          return [...state.filter(item => item.id !== action.payload)];
+//       },
+//       modifyQuantityOfAnItem : (state, action) => {
+//          const productIndex = state.findIndex((item) => item.id === action.payload.id);
+//          state[productIndex].quantity = action.payload.quantity;
+//       },
+//       clearCart : () => {
+//          return [];
+//       }
+//    }
 
-})
+// })
 
-export const {addToCart, removeProduct, modifyQuantityOfAnItem, clearCart} = carSlice.actions;
-export default carSlice.reducer;
+// export const {addToCart, removeProduct, modifyQuantityOfAnItem, clearCart} = carSlice.actions;
+// export default carSlice.reducer;
